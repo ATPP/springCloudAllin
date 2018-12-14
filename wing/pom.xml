@@ -13,13 +13,8 @@
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
         <version>2.0.3.RELEASE</version>
-        <relativePath/>
+        <!--<relativePath/>-->
     </parent>
-
-    <modules>
-        <module>../eureka-server</module>
-        <module>../service-panda</module>
-    </modules>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
