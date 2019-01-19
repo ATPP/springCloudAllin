@@ -23,14 +23,18 @@ public class WzuulServlet extends HttpServlet {
     @Override
     public void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {        //将request，和response放入上下文对象中
         wzuulRunner.init(req, resp);
-        try {            //执行前置过滤
-            wzuulRunner.preRoute();            //执行过滤
-            wzuulRunner.route();            //执行后置过滤
+        try {
+            //执行前置过滤
+            wzuulRunner.preRoute();
+            //执行过滤
+            wzuulRunner.route();
+            //执行后置过滤
             wzuulRunner.postRoute();
         } catch (Throwable e) {
             RequestContext.getCurrentContext().getResponse()
                     .sendError(HttpServletResponse.SC_NOT_FOUND, e.getMessage());
-        } finally {            //清除变量
+        } finally {
+            //清除变量
             RequestContext.getCurrentContext().unset();
         }
     }

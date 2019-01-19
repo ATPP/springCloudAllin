@@ -47,15 +47,19 @@ public class RequestWrapperFilter extends WzuulFilter {
             requestEntity = createRequestEntity(servletRequest, targetURL);
         } catch (Exception e) {
             e.printStackTrace();
-        }        //4、将requestEntity放入全局threadlocal之中
+        }
+        //4、将requestEntity放入全局threadlocal之中
         ctx.setRequestEntity(requestEntity);
     }
 
     private RequestEntity createRequestEntity(HttpServletRequest request, String url) throws URISyntaxException, IOException {
         String method = request.getMethod();
-        HttpMethod httpMethod = HttpMethod.resolve(method);        //1、封装请求头
-        MultiValueMap<String, String> headers = createRequestHeaders(request);        //2、封装请求体
-        byte[] body = createRequestBody(request);        //3、构造出RestTemplate能识别的RequestEntity
+        HttpMethod httpMethod = HttpMethod.resolve(method);
+        //1、封装请求头
+        MultiValueMap<String, String> headers = createRequestHeaders(request);
+        //2、封装请求体
+        byte[] body = createRequestBody(request);
+        //3、构造出RestTemplate能识别的RequestEntity
         RequestEntity requestEntity = new RequestEntity<byte[]>(body, headers, httpMethod, new URI(url));
         return requestEntity;
     }

@@ -11,7 +11,8 @@ import com.hom.wzuul.filter.post.SendResponseFilter;
 import com.hom.wzuul.filter.pre.RequestWrapperFilter;
 import com.hom.wzuul.filter.route.RoutingFilter;
 
-public class WzuulRunner {    //静态写死过滤器
+public class WzuulRunner {
+    //静态写死过滤器
     private ConcurrentHashMap<String, List<WzuulFilter>> hashFiltersByType = new ConcurrentHashMap<String, List<WzuulFilter>>() {{
         put("pre", new ArrayList<WzuulFilter>() {{
             add(new RequestWrapperFilter());
